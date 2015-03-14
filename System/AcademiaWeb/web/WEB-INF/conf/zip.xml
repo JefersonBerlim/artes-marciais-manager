@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Download4J/ZIP sample - JavaZOOM -->
+<!DOCTYPE DOWNLOAD SYSTEM "download.dtd">
+<DOWNLOAD LOGLEVEL="2" LOGFOLDER="">
+    <ZIP ID="uniqueid" DESC="My Archive" PATH="c:/download4j/downloadroot.zip">
+        <PROPERTIES CONTENT-TYPE-FILE="conf/mimes-type.xml"/>
+        <FILE NAME="protectedtest.pdf" CONTENT-DISPOSITION="attachment" MAXDOWNLOAD="3" LOGIN="loginziptest" PASSWORD="passwordziptest"/>
+        <FILE NAME="ziptest.html" URLMAPPING="ziptest.zip" ZIP="enabled"/>
+    </ZIP>
+</DOWNLOAD>

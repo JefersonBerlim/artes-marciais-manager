@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Download4J/Oracle Database sample - JavaZOOM -->
+<!DOCTYPE DOWNLOAD SYSTEM "download.dtd">
+<DOWNLOAD LOGFOLDER="" LOGLEVEL="2">
+    <DATABASE ID="uniqueid" DESC="Oracle" DRIVER="oracle.jdbc.driver.OracleDriver" URL="jdbc:oracle:thin:@MYSERVER:1521:ORCL" DBLOGIN="dblogin" DBPASSWORD="dbpassword">
+        <SCHEMA TABLE="DOWNLOAD" DATACOLUMN="BINARYFILE" FILENAMECOLUMN="FILENAME"/>
+        <PROPERTIES CONTENT-TYPE-FILE="conf/mimes-type.xml"/>
+        <FILE NAME="protectedtest.pdf" CONTENT-DISPOSITION="attachment" MAXDOWNLOAD="3" LOGIN="logindbtest" PASSWORD="passworddbtest"/>
+        <FILE NAME="ziptest.html" URLMAPPING="ziptest.zip" ZIP="enabled"/>
+    </DATABASE>
+</DOWNLOAD>

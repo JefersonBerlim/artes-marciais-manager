@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d38e7460-5f9a-4abc-b4ec-1c0f804d3311">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     TB_ALUNO."ALU_NOME" AS TB_ALUNO_ALU_NOME,
+     TB_PAGAMENTOS."SEQUENCIAL" AS TB_PAGAMENTOS_SEQUENCIAL,
+     TB_PAGAMENTOS."TB_ALUNO_ALU_CODIGO" AS TB_PAGAMENTOS_TB_ALUNO_ALU_CODI,
+     TB_PAGAMENTOS."TB_MENSALIDADE_MEN_CODIGO" AS TB_PAGAMENTOS_TB_MENSALIDADE_ME,
+     TB_PAGAMENTOS."PAG_DTPAGAMENTO" AS TB_PAGAMENTOS_PAG_DTPAGAMENTO,
+     TB_PAGAMENTOS."PAG_VALORPAGO" AS TB_PAGAMENTOS_PAG_VALORPAGO,
+     TB_PAGAMENTOS."PAG_VALORAPAGAR" AS TB_PAGAMENTOS_PAG_VALORAPAGAR
+FROM
+     "TB_ALUNO" TB_ALUNO INNER JOIN "TB_PAGAMENTOS" TB_PAGAMENTOS ON TB_ALUNO."ALU_CODIGO" = TB_PAGAMENTOS."TB_ALUNO_ALU_CODIGO"]]>
+	</queryString>
+	<field name="TB_ALUNO_ALU_NOME" class="java.lang.String"/>
+	<field name="TB_PAGAMENTOS_SEQUENCIAL" class="java.lang.Integer"/>
+	<field name="TB_PAGAMENTOS_TB_ALUNO_ALU_CODI" class="java.lang.Integer"/>
+	<field name="TB_PAGAMENTOS_TB_MENSALIDADE_ME" class="java.lang.Integer"/>
+	<field name="TB_PAGAMENTOS_PAG_DTPAGAMENTO" class="java.sql.Date"/>
+	<field name="TB_PAGAMENTOS_PAG_VALORPAGO" class="java.math.BigDecimal"/>
+	<field name="TB_PAGAMENTOS_PAG_VALORAPAGAR" class="java.math.BigDecimal"/>
+	<sortField name="TB_PAGAMENTOS_PAG_DTPAGAMENTO" order="Descending"/>
+	<variable name="SomaValor" class="java.lang.Double" resetType="Group" resetGroup="Data" calculation="Sum">
+		<variableExpression><![CDATA[$F{TB_PAGAMENTOS_PAG_VALORPAGO}]]></variableExpression>
+		<initialValueExpression><![CDATA[null]]></initialValueExpression>
+	</variable>
+	<variable name="TotalGeral" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{TB_PAGAMENTOS_PAG_VALORPAGO}]]></variableExpression>
+		<initialValueExpression><![CDATA[null]]></initialValueExpression>
+	</variable>
+	<group name="Data">
+		<groupExpression><![CDATA[$F{TB_PAGAMENTOS_PAG_DTPAGAMENTO}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<staticText>
+					<reportElement mode="Opaque" x="1" y="2" width="50" height="18" forecolor="#FFFFFF" backcolor="#999999" uuid="3d70f2da-38c8-4008-b6c7-2db842b15625"/>
+					<textElement>
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Data:
+                    
+                    ]]></text>
+				</staticText>
+				<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+					<reportElement mode="Opaque" x="45" y="2" width="74" height="18" forecolor="#FFFFFF" backcolor="#999999" uuid="d4a1d981-d86b-4b22-b028-3d8c7a85a253"/>
+					<textElement>
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{TB_PAGAMENTOS_PAG_DTPAGAMENTO}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="119" y="2" width="436" height="18" forecolor="#FFFFFF" backcolor="#999999" uuid="ab7cf823-9660-4c30-8329-625bd92fa633"/>
+					<textElement>
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[
+                    
+                    ]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="26">
+				<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
+					<reportElement x="365" y="0" width="79" height="20" uuid="24e4755a-3b77-441d-ba4c-f1ebf4c64d2b"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+				</textField>
+				<staticText>
+					<reportElement x="365" y="0" width="79" height="20" uuid="1414b1c4-1f97-4cb2-944b-8b83265361ee"/>
+					<textElement>
+						<font size="12" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Total:
+                    ]]></text>
+				</staticText>
+				<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
+					<reportElement x="444" y="0" width="111" height="20" uuid="b51aaa31-dfd3-4340-a760-b88d6afc8bf0"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SomaValor}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<pageHeader>
+		<band height="64">
+			<staticText>
+				<reportElement x="131" y="13" width="424" height="35" uuid="72f45b67-f000-418d-b448-d132d59f93a0"/>
+				<textElement textAlignment="Center">
+					<font size="26" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Relação de Pagamentos
+                
+                ]]></text>
+			</staticText>
+			<image>
+				<reportElement x="1" y="0" width="85" height="61" uuid="fec4c121-c7c6-4cb8-999a-0e5539cdf7b2"/>
+				<imageExpression><![CDATA["C:\\AcademiaWeb\\System\\AcademiaWeb\\web\\Imagens\\Logo\\Logo.png"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band/>
+	</columnHeader>
+	<detail>
+		<band height="24">
+			<staticText>
+				<reportElement x="2" y="0" width="49" height="20" uuid="ae81a83f-6dc8-4810-8a23-0b05a78fd650"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Aluno:
+                ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="365" y="0" width="79" height="20" uuid="a0e09e00-4fa1-4735-84fb-7523507323a8"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Valor Pago:
+                ]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="51" y="0" width="314" height="20" uuid="d3acd9cc-9bbe-4fe5-aa1c-752a3ccf7a4a"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TB_ALUNO_ALU_NOME}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
+				<reportElement x="444" y="0" width="111" height="20" uuid="7353fcc1-0f9d-4ecc-8cdd-7281d466565f"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TB_PAGAMENTOS_PAG_VALORPAGO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="24">
+			<staticText>
+				<reportElement x="365" y="4" width="79" height="20" uuid="590260f9-df05-4b05-bc9e-e05b81a56617"/>
+				<textElement>
+					<font size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Total Geral:]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
+				<reportElement x="444" y="4" width="111" height="20" uuid="bb2ac820-9201-4cfd-be4a-e16bc3bab4ac"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{TotalGeral}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="27">
+			<textField evaluationTime="Report" pattern="" isBlankWhenNull="false">
+				<reportElement key="textField" x="516" y="6" width="36" height="19" forecolor="#000000" backcolor="#FFFFFF" uuid="40c69e80-8936-4206-a8ed-9adc27ae41d4"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["" + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement key="textField" x="342" y="6" width="170" height="19" forecolor="#000000" backcolor="#FFFFFF" uuid="4a1cd0c2-57dc-4935-a707-3f614c79d9bc"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER} + " of "]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="false">
+				<reportElement key="textField" x="1" y="6" width="209" height="19" forecolor="#000000" backcolor="#FFFFFF" uuid="ab750512-941a-4a41-b163-445f01cbf41d"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6436548d-d7d9-431f-831e-dd7d83f42ce8">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     TB_ALUNO."ALU_NOME" AS TB_ALUNO_ALU_NOME,
+     TB_AULA."AUL_DATA" AS TB_AULA_AUL_DATA,
+     TB_AULA."AUL_HORARIO" AS TB_AULA_AUL_HORARIO,
+     TB_AULA."AUL_ASSUNTO" AS TB_AULA_AUL_ASSUNTO,
+     TB_AULA."AUL_OBSERVACOES" AS TB_AULA_AUL_OBSERVACOES,
+     TB_EXERCICIO."EXE_DESCRICAO" AS TB_EXERCICIO_EXE_DESCRICAO,
+     TB_PROFESSOR."PRO_NOME" AS TB_PROFESSOR_PRO_NOME
+FROM
+     "TB_ALUNO" TB_ALUNO INNER JOIN "TB_AULA" TB_AULA ON TB_ALUNO."ALU_CODIGO" = TB_AULA."TB_ALUNO_ALU_CODIGO"
+     INNER JOIN "TB_EXERCICIO" TB_EXERCICIO ON TB_AULA."TB_EXERCICIO_EXE_CODIGO" = TB_EXERCICIO."EXE_CODIGO"
+     INNER JOIN "TB_PROFESSOR" TB_PROFESSOR ON TB_AULA."TB_PROFESSOR_PRO_CODIGO" = TB_PROFESSOR."PRO_CODIGO"]]>
+	</queryString>
+	<field name="TB_ALUNO_ALU_NOME" class="java.lang.String"/>
+	<field name="TB_AULA_AUL_DATA" class="java.sql.Date"/>
+	<field name="TB_AULA_AUL_HORARIO" class="java.sql.Time"/>
+	<field name="TB_AULA_AUL_ASSUNTO" class="java.lang.String"/>
+	<field name="TB_AULA_AUL_OBSERVACOES" class="java.lang.String"/>
+	<field name="TB_EXERCICIO_EXE_DESCRICAO" class="java.lang.String"/>
+	<field name="TB_PROFESSOR_PRO_NOME" class="java.lang.String"/>
+	<sortField name="TB_AULA_AUL_DATA" order="Descending"/>
+	<group name="TB_AULA_AUL_DATA">
+		<groupExpression><![CDATA[$F{TB_AULA_AUL_DATA}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<staticText>
+					<reportElement mode="Opaque" x="1" y="2" width="40" height="18" forecolor="#FFFFFF" backcolor="#999999" uuid="dd202690-3b46-4736-9b55-fce9829ecf6a"/>
+					<textElement>
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Data:]]></text>
+				</staticText>
+				<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+					<reportElement mode="Opaque" x="41" y="2" width="514" height="18" forecolor="#FFFFFF" backcolor="#999999" uuid="844483f2-94c9-4d2c-9d03-b40efc2016cd"/>
+					<textElement>
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{TB_AULA_AUL_DATA}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<pageHeader>
+		<band height="64">
+			<staticText>
+				<reportElement x="131" y="13" width="424" height="35" uuid="dd096857-db76-4f02-97a9-3bbe1e367af7"/>
+				<textElement textAlignment="Center">
+					<font size="26" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Relação de Aulas]]></text>
+			</staticText>
+			<image>
+				<reportElement x="1" y="0" width="85" height="61" uuid="e190d772-b330-4779-97eb-00f56936bded"/>
+				<imageExpression><![CDATA["C:\\AcademiaWeb\\System\\AcademiaWeb\\web\\Imagens\\Logo\\Logo.png"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band/>
+	</columnHeader>
+	<detail>
+		<band height="93">
+			<staticText>
+				<reportElement x="2" y="60" width="83" height="20" uuid="4324cb53-1ba7-41ee-a7b1-96bff59801fd"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Observações:]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
+				<reportElement x="85" y="60" width="470" height="20" uuid="d809425c-bab0-4c01-b9d9-9e3c42754638"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TB_AULA_AUL_OBSERVACOES}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="0" width="215" height="20" uuid="1163a8e4-bd3e-4368-a72a-4670e39d0830"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Aluno]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="2" y="20" width="215" height="20" uuid="66266472-0ac3-4058-b93d-3fac3252a881"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TB_ALUNO_ALU_NOME}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="217" y="0" width="177" height="20" uuid="abcedc43-2004-47b8-a22a-14800a1d5dda"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Professor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="394" y="0" width="161" height="20" uuid="b9d75f17-7dc7-48dc-9552-9d00f044310e"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Exercício]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="394" y="20" width="161" height="20" uuid="5c65dd7e-f03c-4ac5-90b7-c08bbecfa2f2"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TB_EXERCICIO_EXE_DESCRICAO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="40" width="55" height="20" uuid="fefb5b1b-3d47-4444-b6ed-08426975e058"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Assunto:]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
+				<reportElement x="57" y="40" width="498" height="20" uuid="e4946395-9cda-4de0-91fb-66ac537256aa"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TB_AULA_AUL_ASSUNTO}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="217" y="20" width="177" height="20" uuid="5222292b-4bb6-441d-bc91-e5948e262d49"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TB_PROFESSOR_PRO_NOME}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="92" width="555" height="1" uuid="99e60986-101e-4fb1-8b9c-121c671fdf7a"/>
+			</line>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="27">
+			<textField evaluationTime="Report" pattern="" isBlankWhenNull="false">
+				<reportElement key="textField" x="516" y="6" width="36" height="19" forecolor="#000000" backcolor="#FFFFFF" uuid="a68b5bce-e79a-4c4c-ba53-ac7cd6fd14c1"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["" + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement key="textField" x="342" y="6" width="170" height="19" forecolor="#000000" backcolor="#FFFFFF" uuid="8d5fe4a1-5120-4142-b248-f81e7aaa1792"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER} + " of "]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="false">
+				<reportElement key="textField" x="1" y="6" width="209" height="19" forecolor="#000000" backcolor="#FFFFFF" uuid="e414ac72-f02a-4cb8-954b-fd6b0b421edf"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

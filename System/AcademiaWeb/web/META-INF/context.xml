@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context antiJARLocking="true" path="/AcademiaWeb">
+  <Resource auth="Container" driverClassName="org.firebirdsql.jdbc.FBDriver" maxActive="20" maxIdle="10" maxWait="-1" name="AcademiaWebPU" password="masterkey" type="javax.sql.DataSource" url="jdbc:firebirdsql:localhost/3050:C:/ACADEMIA WEB/SISTEMA/Banco de Dados Academia Web/academia.fdb" username="sysdba"/>
+</Context>
