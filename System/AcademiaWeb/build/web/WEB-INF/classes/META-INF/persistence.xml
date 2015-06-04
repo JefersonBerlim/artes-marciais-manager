@@ -6,7 +6,7 @@
     <shared-cache-mode>NONE</shared-cache-mode>
     <validation-mode>NONE</validation-mode>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:firebirdsql:localhost/3050:C:/AcademiaWeb/System/Banco de Dados Academia Web/academia.fdb?encoding=UTF8"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:firebirdsql:localhost/3050:AcademiaWeb?encoding=UTF8"/>
       <property name="javax.persistence.jdbc.password" value="masterkey"/>
       <property name="javax.persistence.jdbc.driver" value="org.firebirdsql.jdbc.FBDriver"/>
       <property name="javax.persistence.jdbc.user" value="sysdba"/>
